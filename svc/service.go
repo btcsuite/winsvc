@@ -2,6 +2,8 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+// +build windows
+
 // Package svc provides everything required to build Windows service.
 //
 package svc
@@ -201,15 +203,23 @@ func (s *service) run() {
 
 	status := Status{State: Stopped}
 	ec := exitCode{isSvcSpecific: true, errno: 0}
+	var outch chan ChangeRequest
+	inch := s.c
+	var cmd Cmd
 loop:
 	for {
 		select {
-		case r := <-s.c:
+		case r := <-inch:
 			if r.errno != 0 {
 				ec.errno = r.errno
 				break loop
 			}
-			cmdsToHandler <- ChangeRequest{r.cmd, status}
+			inch = nil
+			outch = cmdsToHandler
+			cmd = r.cmd
+		case outch <- ChangeRequest{cmd, status}:
+			inch = s.c
+			outch = nil
 		case c := <-changesFromHandler:
 			err := s.updateStatus(&c, &ec)
 			if err != nil {
@@ -230,8 +240,24 @@ loop:
 	s.cWaits.Set()
 }
 
-// from sys.c
-func getServiceMain(r *uintptr)
+func newCallback(fn interface{}) (cb uintptr, err error) {
+	defer func() {
+		r := recover()
+		if r == nil {
+			return
+		}
+		cb = 0
+		switch v := r.(type) {
+		case string:
+			err = errors.New(v)
+		case error:
+			err = v
+		default:
+			err = errors.New("unexpected panic in syscall.NewCallback")
+		}
+	}()
+	return syscall.NewCallback(fn), nil
+}
 
 // BUG(brainman): There is no mechanism to run multiple services
 // inside one single executable. Perhaps, it can be overcome by
@@ -273,7 +299,10 @@ func Run(name string, handler Handler) error {
 	goWaitsH = uintptr(s.goWaits.h)
 	cWaitsH = uintptr(s.cWaits.h)
 	sName = t[0].ServiceName
-	ctlHandlerProc = syscall.NewCallback(ctlHandler)
+	ctlHandlerProc, err = newCallback(ctlHandler)
+	if err != nil {
+		return err
+	}
 
 	go s.run()
 

@@ -2,6 +2,8 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+// +build windows
+
 // Example service program that beeps. It demonstrates how to
 // create a service and install / remove it on a computer.
 // It also shows how to stop / start / pause / continue any service,
