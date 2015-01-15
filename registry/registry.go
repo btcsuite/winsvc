@@ -9,9 +9,10 @@
 package registry
 
 import (
-	"github.com/conformal/winsvc/winapi"
 	"syscall"
 	"unsafe"
+
+	"github.com/btcsuite/winsvc/winapi"
 )
 
 type Key struct {

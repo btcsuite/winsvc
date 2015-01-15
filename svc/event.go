@@ -7,9 +7,10 @@
 package svc
 
 import (
-	"github.com/conformal/winsvc/winapi"
 	"errors"
 	"syscall"
+
+	"github.com/btcsuite/winsvc/winapi"
 )
 
 // event represents auto-reset, initially non-signaled windows event.

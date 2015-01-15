@@ -12,8 +12,9 @@
 package mgr
 
 import (
-	"github.com/conformal/winsvc/winapi"
 	"syscall"
+
+	"github.com/btcsuite/winsvc/winapi"
 )
 
 // Mgr is used to manage Windows service.
@@ -26,7 +27,7 @@ func Connect() (*Mgr, error) {
 	return ConnectRemote("")
 }
 
-// ConnectRemote establishes a connection to the 
+// ConnectRemote establishes a connection to the
 // service control manager on computer named host.
 func ConnectRemote(host string) (*Mgr, error) {
 	var s *uint16

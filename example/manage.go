@@ -7,10 +7,11 @@
 package main
 
 import (
-	"github.com/conformal/winsvc/mgr"
-	"github.com/conformal/winsvc/svc"
 	"fmt"
 	"time"
+
+	"github.com/btcsuite/winsvc/mgr"
+	"github.com/btcsuite/winsvc/svc"
 )
 
 func startService(name string) error {

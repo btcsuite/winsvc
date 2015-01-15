@@ -7,9 +7,10 @@
 package svc
 
 import (
-	"github.com/conformal/winsvc/winapi"
 	"syscall"
 	"unsafe"
+
+	"github.com/btcsuite/winsvc/winapi"
 )
 
 // TODO(brainman): move some of that code to syscall/security.go

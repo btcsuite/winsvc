@@ -7,11 +7,12 @@
 package main
 
 import (
-	"github.com/conformal/winsvc/eventlog"
-	"github.com/conformal/winsvc/mgr"
 	"fmt"
 	"os"
 	"path/filepath"
+
+	"github.com/btcsuite/winsvc/eventlog"
+	"github.com/btcsuite/winsvc/mgr"
 )
 
 func exePath() (string, error) {

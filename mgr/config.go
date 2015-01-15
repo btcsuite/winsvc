@@ -7,14 +7,15 @@
 package mgr
 
 import (
-	"github.com/conformal/winsvc/winapi"
 	"syscall"
 	"unsafe"
+
+	"github.com/btcsuite/winsvc/winapi"
 )
 
 const (
 	// Service start types
-	StartManual    = winapi.SERVICE_DEMAND_START // the service must be started manually 
+	StartManual    = winapi.SERVICE_DEMAND_START // the service must be started manually
 	StartAutomatic = winapi.SERVICE_AUTO_START   // the service will start by itself whenever the computer reboots
 	StartDisabled  = winapi.SERVICE_DISABLED     // the service cannot be started
 

@@ -13,11 +13,12 @@
 package main
 
 import (
-	"github.com/conformal/winsvc/svc"
 	"fmt"
 	"log"
 	"os"
 	"strings"
+
+	"github.com/btcsuite/winsvc/svc"
 )
 
 func usage(errmsg string) {

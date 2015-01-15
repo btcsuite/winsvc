@@ -9,11 +9,12 @@
 package svc
 
 import (
-	"github.com/conformal/winsvc/winapi"
 	"errors"
 	"runtime"
 	"syscall"
 	"unsafe"
+
+	"github.com/btcsuite/winsvc/winapi"
 )
 
 // State describes service execution state (Stopped, Running and so on).

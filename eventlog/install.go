@@ -7,10 +7,11 @@
 package eventlog
 
 import (
-	"github.com/conformal/winsvc/registry"
-	"github.com/conformal/winsvc/winapi"
 	"errors"
 	"syscall"
+
+	"github.com/btcsuite/winsvc/registry"
+	"github.com/btcsuite/winsvc/winapi"
 )
 
 const (

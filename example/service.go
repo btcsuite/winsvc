@@ -7,11 +7,12 @@
 package main
 
 import (
-	"github.com/conformal/winsvc/debug"
-	"github.com/conformal/winsvc/eventlog"
-	"github.com/conformal/winsvc/svc"
 	"fmt"
 	"time"
+
+	"github.com/btcsuite/winsvc/debug"
+	"github.com/btcsuite/winsvc/eventlog"
+	"github.com/btcsuite/winsvc/svc"
 )
 
 var elog debug.Log

@@ -7,10 +7,11 @@
 package mgr_test
 
 import (
-	"github.com/conformal/winsvc/mgr"
 	"os"
 	"path/filepath"
 	"testing"
+
+	"github.com/btcsuite/winsvc/mgr"
 )
 
 func TestOpenLanManServer(t *testing.T) {

@@ -9,9 +9,10 @@
 package eventlog
 
 import (
-	"github.com/conformal/winsvc/winapi"
 	"errors"
 	"syscall"
+
+	"github.com/btcsuite/winsvc/winapi"
 )
 
 // Log provides access to system log.

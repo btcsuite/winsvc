@@ -7,8 +7,9 @@
 package eventlog_test
 
 import (
-	"github.com/conformal/winsvc/eventlog"
 	"testing"
+
+	"github.com/btcsuite/winsvc/eventlog"
 )
 
 func TestLog(t *testing.T) {

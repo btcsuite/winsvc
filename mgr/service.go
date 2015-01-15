@@ -7,9 +7,10 @@
 package mgr
 
 import (
-	"github.com/conformal/winsvc/svc"
-	"github.com/conformal/winsvc/winapi"
 	"syscall"
+
+	"github.com/btcsuite/winsvc/svc"
+	"github.com/btcsuite/winsvc/winapi"
 )
 
 // TODO(brainman): use EnumDependentServices to enumerate dependent services
